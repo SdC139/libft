@@ -6,7 +6,7 @@
 /*   By: sde-carl <sde-carl@student.42roma.it >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:45:04 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/06 19:55:49 by sde-carl         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:08:01 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if (start > (unsigned int)ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
+	if (len > (unsigned int)ft_strlen(s + start))
 		len = ft_strlen(s + start);
 	substr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr)

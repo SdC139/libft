@@ -6,9 +6,10 @@
 /*   By: sde-carl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:11:38 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/04 16:13:00 by sde-carl         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:10:34 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 size_t	ft_number_size(int number)
 {

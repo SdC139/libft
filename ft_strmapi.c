@@ -6,7 +6,7 @@
 /*   By: sde-carl <sde-carl@student.42roma.it >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:44:19 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/04 14:26:08 by sde-carl         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:13:43 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i])
 	{	
-		str[i++] = f(i, s[i]);
+		str[i] = f(i, s[i]);
+		i ++;
 	}
 	str[i] = '\0';
 	return (str);

@@ -6,28 +6,35 @@
 /*   By: sde-carl <sde-carl@student.42roma.it >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:41:25 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/04 14:21:13 by sde-carl         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:06:57 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
-{	
-	const char	*s;
-	char		*d;
+{
+	size_t	i;
 
-	d = dest;
-	s = src;
-	if (d < s)
-		while (n--)
-			*d++ = *s++;
-	else
+	i = 0;
+	if ((!dest && !src) || (src == dest))
+		return (NULL);
+	if ((size_t)dest - (size_t)src < n)
 	{	
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
+		i = n - 1;
+		while (i >= 0 && i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i --;
+		}
+	}
+	else
+	{
+		while (i < n)
+		{	
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i ++;
+		}
 	}
 	return (dest);
 }

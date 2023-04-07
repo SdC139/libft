@@ -6,71 +6,55 @@
 /*   By: sde-carl <sde-carl@student.42roma.it >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:42:58 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/03/31 19:42:58 by sde-carl         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:32:31 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+static size_t	get_word(const char *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	wrds;
 
-	i = 0;
-	count = 0;
-	while (s[i])
+	wrds = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
-			count++;
-			while (s[i] != c && s[i])
-				i++;
+			++wrds;
+			while (*s && *s != c)
+				++s;
 		}
 		else
-			i++;
+			++s;
 	}
-	return (count);
+	return (wrds);
 }
 
-static int	ft_word_len(char const *s, char c, int i)
+char	**ft_split(const char *s, char c)
 {
-	int	len;
+	char	**str;
+	size_t	i;
+	size_t	len;
 
-	len = 0;
-	while (s[i] != c && s[i])
-	{
-		len++;
-		i++;
-	}
-	return (len);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**arr;
-	int		i;
-	int		j;
-	int		k;
-
+	if (!s)
+		return (0);
 	i = 0;
-	j = 0;
-	if (!s || !(arr = (char **)malloc(sizeof(char *)*(ft_count_words(s, c) + 1))))
-		return (NULL);
-	while (s[i])
+	str = malloc(sizeof(char *) * (get_word(s, c) + 1));
+	if (!str)
+		return (0);
+	while (*s)
 	{
-		k = 0;
-		if (s[i] != c)
-		{	
-			if (!(arr[j] = (char *)malloc(sizeof(char)*(ft_word_len(s, c, i) + 1))))
-				return (NULL);
-			while (s[i] != c && s[i])
-				arr[j][k++] = s[i++];
-			arr[j++][k] = '\0';
+		if (*s != c)
+		{
+			len = 0;
+			while (*s && *s != c && ++len)
+				++s;
+			str[i++] = ft_substr(s - len, 0, len);
 		}
 		else
-			i++;
+			++s;
 	}
-	arr[j] = NULL;
-	return (arr);
+	str[i] = 0;
+	return (str);
 }
