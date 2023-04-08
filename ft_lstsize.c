@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-carl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 19:08:44 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/08 19:10:09 by sde-carl         ###   ########.fr       */
+/*   Created: 2023/04/08 17:33:31 by sde-carl          #+#    #+#             */
+/*   Updated: 2023/04/08 17:38:46 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
-{	
-	int	i;
-	int	number;
-	int	sign;
+int	ft_lstsize(t_list *lst)
+{
+	int		count;
+	t_list	*node;
 
-	i = 0;
-	number = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			i ++;
-	if (str[i] == '+')
-	{	
-		i ++;
-	}
-	else if (str[i] == '-')
+	node = lst;
+	count = 0;
+	while (node != NULL)
 	{
-		sign *= -1;
-		i ++;
+		count++;
+		node = node->next;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{	
-		number = (number * 10) + (str[i] - 48);
-		i ++;
-	}
-	number *= sign;
-	return (number);
+	return (count);
 }

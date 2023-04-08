@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-carl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 19:08:44 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/08 19:10:09 by sde-carl         ###   ########.fr       */
+/*   Created: 2023/04/08 17:39:26 by sde-carl          #+#    #+#             */
+/*   Updated: 2023/04/08 17:43:02 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
-{	
-	int	i;
-	int	number;
-	int	sign;
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*temp;
 
-	i = 0;
-	number = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			i ++;
-	if (str[i] == '+')
+	if (!lst || !new)
+		return ;
+	if (*lst)
 	{	
-		i ++;
+		temp = ft_lstlast(*lst);
+		temp->next = new;
 	}
-	else if (str[i] == '-')
-	{
-		sign *= -1;
-		i ++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{	
-		number = (number * 10) + (str[i] - 48);
-		i ++;
-	}
-	number *= sign;
-	return (number);
+	else
+		*lst = new;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-carl <sde-carl@student.42roma.it >     +#+  +:+       +#+        */
+/*   By: sde-carl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 19:44:57 by sde-carl          #+#    #+#             */
-/*   Updated: 2023/04/04 14:45:41 by sde-carl         ###   ########.fr       */
+/*   Created: 2023/04/08 21:04:46 by sde-carl          #+#    #+#             */
+/*   Updated: 2023/04/08 21:17:24 by sde-carl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = 0;
 	if (!s1 || !set)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!str)
-		return (NULL);
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i ++;
-	while (s1[i])
+	k = ft_strlen(s1) - 1;
+	while (k > i && ft_strchr(set, s1[k]))
+		k --;
+	str = (char *)malloc(sizeof(char) * (k - i + 2));
+	if (!str)
+		return (NULL);
+	while (i <= k)
 		str[j++] = s1[i++];
 	str[j] = '\0';
-	k = ft_strlen(str) - 1;
-	while (k >= 0 && ft_strchr(set, str[k]))
-		str[k--] = '\0';
 	return (str);
 }
