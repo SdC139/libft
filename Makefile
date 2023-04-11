@@ -6,7 +6,7 @@
 #    By: sde-carl <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 18:15:04 by sde-carl          #+#    #+#              #
-#    Updated: 2023/04/07 19:03:57 by sde-carl         ###   ########.fr        #
+#    Updated: 2023/04/11 17:02:22 by sde-carl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME := libft.a
@@ -43,11 +43,11 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-bonus : ${OBJ_B}
-	ar rcs ${NAME} ${OBJ_B}
+bonus : ${OBJ_BONUS}
+	ar rcs ${NAME} ${OBJ_BONUS}
 
 clean:
-	${RM} ${OBJS} ${OBJ_B}
+	${RM} ${OBJS} ${OBJ_BONUS}
 
 fclean: clean
 	${RM} ${NAME}
